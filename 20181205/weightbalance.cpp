@@ -55,6 +55,5 @@ void scale(int l, int r, int wN){
 int main(void){
     scanf("%d", &userinput);
     scale(userinput, 0, 0);
-
     return 0;
 }
