@@ -11,6 +11,5 @@
         "typeinfo": "cpp",
         "algorithm": "cpp",
         "stack": "cpp"
-    },
-    "C_Cpp.errorSquiggles": "Disabled"
+    }
 }

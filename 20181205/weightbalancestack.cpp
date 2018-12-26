@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stack>
+#include <memory.h>
 
 using namespace std;
 
@@ -61,12 +62,7 @@ int main(void){
             break;
         }
 
-        if(cN == 7){
-            continue;
-        }
-
         s.pop();
-
         
         if(cN == 1){
             s.push(1,s2,s3,s4,s5,s5,s7, cL + wP[cN], cR, cN+1); // Left
@@ -92,19 +88,19 @@ int main(void){
             s.push(s1,s2,s3,s4,s5,1,s7, cL + wP[cN], cR, cN+1); // Left
             s.push(s1,s2,s3,s4,s5,2,s7, cL, cR + wP[cN], cN+1); // Right
         }
-
-
-
-
-
+        if(cN == 7){
+            s.push(s1,s2,s3,s4,s5,s6,1, cL + wP[cN], cR, cN+1); // Left
+            s.push(s1,s2,s3,s4,s5,s6,2, cL, cR + wP[cN], cN+1); // Right            
+        }
+        if(cN == 8){
+            continue;
+        }
 
         status[cN] = 1;
         s.push((w){status[7], cL + wP[cN], cR, cN+1});
 
         status[cN] = 2;
         s.push((w){status[7], cL, cR + wP[cN], cN+1});
-        
-
     }
 
 }
