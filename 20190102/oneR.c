@@ -4,9 +4,7 @@ int minC = 999;
 
 void one(int n, int cnt){
     if(n == 1){
-        if(cnt < minC){
-            minC = cnt;
-        }
+        if(cnt < minC) minC = cnt;
         return;
     }
 
@@ -16,13 +14,10 @@ void one(int n, int cnt){
     else if(n % 2 == 0){
         one(n/2, cnt+1);
     }
-    one(n-1,cnt+1);
- }
+    one(n-1, cnt+1);
+}
 
 int main(void){
-    int input;
-    scanf("%d", &input);
-
-    one(input, 0);
+    one(10,0);
     printf("%d\n", minC);
 }
