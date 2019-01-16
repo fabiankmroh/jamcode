@@ -2,34 +2,41 @@
 
 int max = 0;
 int triangle[500][500];
+int scorechart[500][500];
 int x, n;
 
-int add(int cX, int cY){
-    n += triangle[cX][cY];
-    printf("%d\n", triangle[cX][cY]);
+void add(int cX, int cY, int score){
+    score += triangle[cX][cY];
 
     if(cX == x){
-        if(n > max) max = n;
-        
-        n = 0;
-        return n;
+        if(score > max) max = score;
+        score = 0;
+        cX = 0;
+        cY = 0;
+        return;
     }
 
-    add(cX+1, cY+1) + add(cX+1, cY);
+    if(scorechart[cX][cY] > 0){
+        if(score+scorechart[cX][cY]>max) max = score+scorechart[cX][cY];
+    }
+    else {
+        //scorechart[cX][cY] = score;
+        add(cX+1, cY+1, score);
+        add(cX+1, cY, score);
+    }
 }
 
 int main(void){
+    int i, j;
     scanf("%d", &x);
     
-    for(int i = 0; i < x; i++){
-        for(int j = 0; j < i; j++){
+    for(i = 0; i <= x; i++){
+        for(j = 0; j < i; j++){
             scanf("%d", &triangle[i][j]);
         }
     }
 
     n = 0;
-    printf("\n");
-    add(0, 0);
-    printf("\n");
+    add(0, 0, 0);
     printf("%d\n", max);
 }
