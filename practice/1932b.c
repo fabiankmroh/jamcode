@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-int triangle[500][500];
-int maxscore[500][500];
+int triangle[501][501];
+int maxscore[501][501];
 int lim;
 
 int score(int cX, int cY){
@@ -11,30 +11,12 @@ int score(int cX, int cY){
     if(cX == lim) return 0;
 
     if(maxscore[cX+1][cY] < c + triangle[cX+1][cY]){
-        printf("CASE #1\n");
         maxscore[cX+1][cY] = c + triangle[cX+1][cY];
         score(cX+1, cY);
-
-        printf("\n\nMAXSCORE\n");
-        for(i = 0; i <= lim; i++){
-            for(j = 0; j < i; j++){
-                printf("%d ", maxscore[i][j]);
-            }
-            printf("\n");
-        }
     }
     if(maxscore[cX+1][cY+1] < c + triangle[cX+1][cY+1]){
-        printf("CASE #2\n");
         maxscore[cX+1][cY+1] = c + triangle[cX+1][cY+1];
         score(cX+1, cY+1);
-
-        printf("\n\nMAXSCORE\n");
-        for(i = 0; i <= lim; i++){
-            for(j = 0; j < i; j++){
-                printf("%d ", maxscore[i][j]);
-            }
-            printf("\n");
-        }
     }
 
 }
@@ -57,11 +39,11 @@ int main(void){
     score(0,0);
 
     for(cnt = 0; cnt < lim; cnt++){
-        m = maxscore[lim-1][cnt];
+        m = maxscore[lim][cnt];
         if(max < m){
             max = m;
         }
     }
 
-    printf("%d\n", m);
+    printf("%d\n", max);
 }
