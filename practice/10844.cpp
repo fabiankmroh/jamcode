@@ -11,12 +11,16 @@ int digit(int i){
 
     prev = i % 10;
     
-    for(int cnt = 0; cnt < n; cnt++){
+    for(int cnt = 0; cnt <= n; cnt++){
         now = i % 10;
+        printf("%d: %d\n", i, now);
         a = now - prev;
         if(a != 1 && a != -1){
+            printf("FALSE\n");
             return FALSE;
         }
+
+        prev = now;
         i /= 10;
     }
 
@@ -38,5 +42,5 @@ int main(void){
         if(digit(i) == TRUE ) cnt++;
     }
 
-    printf("%d\n", cnt);
+    printf("%d\n", cnt % 1000000000);
 }
