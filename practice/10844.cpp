@@ -11,7 +11,7 @@ int digit(int i){
 
     prev = i % 10;
     
-    while(i > 0){
+    for(int cnt = 0; cnt < n; cnt++){
         now = i % 10;
         a = now - prev;
         if(a != 1 && a != -1){
