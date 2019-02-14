@@ -1,10 +1,10 @@
 #include <stdio.h>
 
-int lim;
-int sto[11][101];
-int ans = 0;
+long long int lim;
+long long int sto[11][101];
+long long int ans = 0;
 
-int num(int n, int len){
+long long int num(long long int n, int len){
     if(sto[n][len] > 0){
         return sto[n][len];
     }
@@ -30,7 +30,7 @@ int num(int n, int len){
 int main(void){
     int i;
 
-    scanf("%d", &lim);
+    scanf("%lld", &lim);
 
     for(i = 1; i <= 9; i++){
         num(i, 1);
@@ -40,5 +40,5 @@ int main(void){
         ans += sto[i][1];
     }
 
-    printf("%d", ans% 1000000000);
+    printf("%lld\n", ans% 1000000000);
 }

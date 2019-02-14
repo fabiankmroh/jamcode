@@ -1,43 +1,45 @@
 #include <stdio.h>
 
-#define RED    0
-#define GREEN  1
-#define BLUE   2
+int paintC[1000][3];
+int minC = 99999;
+int input;
 
-int minT = 9999;
-int houseCnt;
-int i, j;
-
-int cost[1000][3];
-
-int paint(int n, int pC, int total){
-    for(i = 1; i <= 3; i++){
-        if(i == pC){
-            continue;
-        }   
-
-        int a = total+cost[n][pC];
-
-        if(n == houseCnt){
-            if(a < minT){
-                minT = a;
-            }
-
-            return 0;
+int house(int number, int color, int price){
+    if(number == input){
+        if(price < minC){
+            minC = price;
         }
+ 
+        return 0;
+    }
 
-        return paint(n+1, i, a);
+    if(color == 0){
+        house(number+1, 1, price+paintC[number+1][1]);
+        house(number+1, 2, price+paintC[number+1][2]);
+    }
+    else if(color == 1){
+        house(number+1, 0, price+paintC[number+1][0]);
+        house(number+1, 2, price+paintC[number+1][2]);
+    }
+    else if(color == 2){
+        house(number+1, 0, price+paintC[number+1][0]);
+        house(number+1, 1, price+paintC[number+1][1]);
     }
 }
 
 int main(void){
-    scanf("%d", &houseCnt);
+    int i, j;
+    scanf("%d", &input);
 
-    for(i = 0; i < houseCnt; i++){
+    for(i = 0; i < input; i++){
         for(j = 0; j < 3; j++){
-            scanf("%d", &cost[i][j]);
+            scanf("%d", &paintC[i][j]);
         }
     }
 
-    printf("%d\n", minT);
+    house(0,0,paintC[0][0]);
+    house(0,1,paintC[0][1]);
+    house(0,1,paintC[0][2]);
+
+    printf("%d\n", minC); 
 }

@@ -1,42 +1,33 @@
 #include <stdio.h>
 
-int max = 0;
-int triangle[500][500];
-int scorechart[500][500];
-int x, n;
-
-void add(int cX, int cY, int score){
-    score += triangle[cX][cY];
-
-    if(cX == x){
-        if(score > max) max = score;
-        score = 0;
-        cX = 0;
-        cY = 0;
-        return;
-    }
-
-    if(scorechart[cX][cY] > 0){
-        if(score+scorechart[cX][cY]>max) max = score+scorechart[cX][cY];
-    }
-    else {
-        //scorechart[cX][cY] = score;
-        add(cX+1, cY+1, score);
-        add(cX+1, cY, score);
-    }
-}
-
 int main(void){
+    int tri[500][500];
+    int scor[500][500];
+
+    int col;
     int i, j;
-    scanf("%d", &x);
-    
-    for(i = 0; i <= x; i++){
-        for(j = 0; j < i; j++){
-            scanf("%d", &triangle[i][j]);
+
+    scanf("%d", &col);
+    for(i = 0; i < col; i++){
+        for(j = 0; j <= i; j++){
+            scanf("%d", &tri[i][j]);
         }
     }
 
-    n = 0;
-    add(0, 0, 0);
-    printf("%d\n", max);
+    for(i = 0; i < col; i++){
+        scor[col-1][i] = tri[col-1][i];
+    }
+
+    for(i = col-2; i >= 0; i--){
+        for(j = 0; j <= i; j++){
+            if(scor[i+1][j] > scor[i+1][j+1]){
+                scor[i][j] = tri[i][j] + scor[i+1][j];
+            }
+            else{
+                scor[i][j] = tri[i][j] + scor[i+1][j+1];
+            }
+        }
+    }
+    
+    printf("%d\n", scor[0][0]);
 }
