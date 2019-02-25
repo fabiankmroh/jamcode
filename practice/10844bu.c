@@ -36,5 +36,5 @@ int main(void){
         ans += accu[0][i] % 1000000000;
     }
 
-    printf("%d", ans % 1000000000);
+    printf("%d\n", ans % 1000000000);
 }
