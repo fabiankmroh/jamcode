@@ -13,13 +13,17 @@ int add(int n){
         return 1;
     }
     
-    num[n] = add(n-1) + add(n-2) + add(n-3);
+    num[n] += add(n-1) + add(n-2) + add(n-3);
     return num[n];
 }
 
 int main(void){
     int n, k;
     scanf("%d", &n);
+
+    num[1] = 1;
+    num[2] = 2;
+    num[3] = 4;
     
     for(int i = 0; i < n; i++){
         scanf("%d", &k);
