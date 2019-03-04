@@ -1,3 +1,4 @@
+// FAILED
 #include <stdio.h>
 
 int cost[3][1500];
