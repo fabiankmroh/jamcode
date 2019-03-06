@@ -5,8 +5,7 @@ int cost[1500][3];
 int ans[1500][3];
 int lim;
 int i, j;
-int ii, jj;
-int final = 999;
+int final = 1234567890;
 
 int main(void){
     scanf("%d", &lim);
