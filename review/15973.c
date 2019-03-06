@@ -1,0 +1,75 @@
+#include <stdio.h>
+
+int main(void){
+    int x1, x2, x3, x4;
+    int y1, y2, y3, y4;
+    int xcase, ycase;
+    int ans;
+
+    scanf("%d %d %d %d", &x1, &y1, &x2, &y2);
+    scanf("%d %d %d %d", &x3, &y3, &x4, &y4);
+
+    // X case 
+    if(x2 < x3){
+        xcase = 0;
+    }
+    else if(x2 == x3){
+        xcase = 1;
+    }
+    else if(x1 < x2 && x2 < x3){
+        xcase = 2;
+    }
+
+    if(x4 < x1){
+        xcase = 0;
+    }
+    else if(x4 == x1){
+        xcase = 1;
+    }
+    else if(x3 < x1 && x1 < x4){
+        xcase = 2;
+    }
+
+
+    // Y case
+    if(y2 < y3){
+        ycase = 0;
+    }
+    else if(y2 == y3){
+        ycase = 1;
+    }
+    else if(y1 < y2 && y2 < y3){
+        ycase = 2;
+    }
+
+    if(y4 < y1){
+        ycase = 0;
+    }
+    else if(y4 == y1){
+        ycase = 1;
+    }
+    else if(y3 < y1 && y1 < y4){
+        ycase = 2;
+    }
+
+    ans = xcase * ycase;
+
+    switch(ans){
+        case 0:
+            printf("NULL\n");
+            break;
+        case 1:
+            printf("POINT\n");
+            break;
+        case 2:
+            printf("LINE\n");
+            break;
+        case 4:
+            printf("FACE");
+            break;
+        default:
+            break;
+    }
+
+    return 0;
+}
