@@ -2,32 +2,34 @@
 
 int main(void){
     int lim;
-    int lst[123456789][2]; // Coordinate & Color
-    int i, j; // Used for coordinate designation
-    int k, l; // Used for coordinate searching
+    int loc[123456789]; // Coordinate Location List
+    int col[123456789]; // Color List (Matched Accordingly)
+    int i, j; 
+    int currLoc;
     int ld, rd; // left distance, right distance
     int final = 0;
 
     scanf("%d", &lim);
     
     for(i = 0; i <= lim; i++){
-        for(j = 0; j < 2; j++){
-            scanf("%d", &lst[i][j]);
-        }
+        scanf("%d", &loc[i]);
+        scanf("%d", &col[i]);
     }
 
-    for(i = 0; i <= 123456789; i++){
+    for(i = 0; i <= lim; i++){
+        loc[i] = currLoc;
+
         // Going Left
-        for(j = i; j >= 0; j--){
-            if(lst[j][1] == lst[i][1]){
+        for(j = currLoc; j >= 0; j--){
+            if(col[j] == col[i]){
                 ld = i - j;
                 break;
             }
         }
 
         // Going Right
-        for(j = i; j <= 123456789; j++){
-            if(lst[j][1] == lst[i][1]){
+        for(j = currLoc; j <= lim; j++){
+            if(col[j] == col[i]){
                 rd = j - i;
                 break;
             }
